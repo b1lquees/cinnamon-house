@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cinnamon House</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gulzar&family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="temp2.css">
+</head>
+<body>
+    <!-- MENU BUTTON -->
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <!-- SIDEBAR -->
+    <div id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="toggleMenu()">✕</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <hr>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="menu.html">Explore Menu</a></li>
+            <hr>
+            <li><a href="#story">About Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Cinnamon <span>House</span></a>
+                
+                <!-- Search and Cart -->
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search products..." class="search-input" id="searchInput">
+                        <button class="search-btn" onclick="performSearch()"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="cart-container">
+                        <button class="cart-btn" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="#story">Our Story</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shopping Cart -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart-msg">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: $<span id="cartTotal">0.00</span></span>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>ہمارے گھر سے آپ کے گھر تک</h1>
+            <p>Discover our premium selection of freshly baked breads, pastries, and desserts made with the finest ingredients and traditional techniques.</p>
+            <a href="menu.html" class="btn">Explore Our Products</a>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands">
+        <div class="container">
+            <h2 class="section-title">Our Brands</h2>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <i class="fas fa-cookie-bite"></i>
+                    <h3>Cookies</h3>
+                    <p>Delicious cookies in various flavors, from classic chocolate chip to gourmet creations.</p>
+                </div>
+                <div class="brand-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Donuts</h3>
+                    <p>Handcrafted donuts featuring a caramel drizzle and sea salt topping.</p>
+                </div>
+                <div class="brand-card">
+                    <i class="fas fa-bread-slice"></i>
+                    <h3>Breads</h3>
+                    <p>Freshly baked perfect for breakfast or as a side to your meals.</p>
+                </div>
+                <div class="brand-card">
+                    <i class="fas fa-cheese"></i>
+                    <h3>Savory</h3>
+                    <p>Hearty savory pastries and breads for those who prefer less sweet options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-categories">
+                <button class="category-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="category-btn" onclick="filterProducts('breads')">Breads</button>
+                <button class="category-btn" onclick="filterProducts('pastries')">Pastries</button>
+                <button class="category-btn" onclick="filterProducts('desserts')">Desserts</button>
+                <button class="category-btn" onclick="filterProducts('seasonal')">Seasonal</button>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <div class="product-card" data-category="breads">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Japanese Milk Bread</h3>
+                        <p>Soft, fluffy milk bread with a subtle sweetness and delicate texture.</p>
+                        <div class="product-price">
+                            <span class="price">Rs.650</span>
+                            <button class="btn" onclick="addToCart('Japanese Milk Bread', 6.50)">Add to Cart</button>
+                        </div>
+                        <button class="btn review-btn" onclick="openReviewModal('Japanese Milk Bread')">Write Review</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="pastries">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1555507036-ab794f27d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Croissant</h3>
+                        <p>Buttery, flaky French croissant with a golden crisp exterior.</p>
+                        <div class="product-price">
+                            <span class="price">Rs.375</span>
+                            <button class="btn" onclick="addToCart('Croissant', 3.75)">Add to Cart</button>
+                        </div>
+                        <button class="btn review-btn" onclick="openReviewModal('Croissant')">Write Review</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="desserts">
+                    <div class="product-img" style="background-image: url('https://i0.wp.com/withtwospoons.com/wp-content/uploads/2017/08/DSC_0455.jpg?resize=1024%2C683&ssl=1');"></div>
+                    <div class="product-info">
+                        <h3>Donuts</h3>
+                        <p>Traditional donuts with a cinnamon-sugar coating that crackles with every bite</p>
+                        <div class="product-price">
+                            <span class="price">Rs.400</span>
+                            <button class="btn" onclick="addToCart('Donuts', 4.00)">Add to Cart</button>
+                        </div>
+                        <button class="btn review-btn" onclick="openReviewModal('Donuts')">Write Review</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="pastries">
+                    <div class="product-img" style="background-image: url('https://cambreabakes.com/wp-content/uploads/2024/03/bakery-style-blueberry-muffins-featured-2.jpg');"></div>
+                    <div class="product-info">
+                        <h3>Blueberry Muffin</h3>
+                        <p>Moist muffin bursting with fresh blueberries and a sweet crumb topping.</p>
+                        <div class="product-price">
+                            <span class="price">Rs.425</span>
+                            <button class="btn" onclick="addToCart('Blueberry Muffin', 4.25)">Add to Cart</button>
+                        </div>
+                        <button class="btn review-btn" onclick="openReviewModal('Blueberry Muffin')">Write Review</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="desserts">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Apple Pie</h3>
+                        <p>Classic apple pie with flaky crust and cinnamon-spiced apple filling.</p>
+                        <div class="product-price">
+                            <span class="price">Rs.1850</span>
+                            <button class="btn" onclick="addToCart('Apple Pie', 18.50)">Add to Cart</button>
+                        </div>
+                        <button class="btn review-btn" onclick="openReviewModal('Apple Pie')">Write Review</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="breads">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1608190003443-86ab6a3b6c14?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Baguette</h3>
+                        <p>Traditional French baguette with crispy crust and soft interior.</p>
+                        <div class="product-price">
+                            <span class="price">Rs.325</span>
+                            <button class="btn" onclick="addToCart('Baguette', 3.25)">Add to Cart</button>
+                        </div>
+                        <button class="btn review-btn" onclick="openReviewModal('Baguette')">Write Review</button>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="menu.html" class="btn" style="padding: 12px 40px;">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story" id="story">
+        <div class="container">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>Founded in 2010, Cinnamon House began as a small neighborhood bakery with a passion for creating exceptional baked goods using traditional techniques and the finest ingredients.</p>
+                <p>Today, we continue to honor our roots while innovating with new flavors and creations that delight our customers every day.</p>
+                <a href="#contact" class="btn">Learn More</a>
+            </div>
+            <div class="story-image"></div>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section" id="checkoutSection">
+        <div class="container">
+            <div class="checkout-container">
+                <h2 class="checkout-title">Checkout</h2>
+                <form class="checkout-form" id="checkoutForm">
+                    <div class="form-group">
+                        <label for="customerName">Full Name</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">Email</label>
+                        <input type="email" id="customerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">Phone</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerAddress">Delivery Address</label>
+                        <textarea id="customerAddress" required></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Order Summary</label>
+                        <div class="order-summary" id="orderSummary">
+                            <!-- Order items will be populated by JavaScript -->
+                        </div>
+                        <div class="order-total">
+                            <span>Total:</span>
+                            <span>Rs.<span id="orderTotal">0.00</span></span>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="submit-order">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Modal -->
+    <div class="review-modal" id="reviewModal">
+        <div class="review-content">
+            <div class="review-header">
+                <h3>Write a Review for <span id="reviewProductName"></span></h3>
+                <button class="close-review" onclick="closeReviewModal()">✕</button>
+            </div>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="rating" id="ratingStars">
+                        <span class="star" onclick="setRating(1)">★</span>
+                        <span class="star" onclick="setRating(2)">★</span>
+                        <span class="star" onclick="setRating(3)">★</span>
+                        <span class="star" onclick="setRating(4)">★</span>
+                        <span class="star" onclick="setRating(5)">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reviewText">Your Review</label>
+                    <textarea class="review-text" id="reviewText" placeholder="Share your experience with this product..." required></textarea>
+                </div>
+                <button type="submit" class="submit-review">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Cinnamon House</h3>
+                    <p>Artisanal bakery dedicated to creating premium baked goods with passion and precision.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="#story">About Us</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Bakery Street, Sweet City</li>
+                        <li><i class="fas fa-phone"></i> (051)-123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@cinnamonhouse.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 7am-7pm, Sun: 8am-5pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Cinnamon House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
