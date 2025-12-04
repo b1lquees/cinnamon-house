@@ -86,7 +86,7 @@ body {
 
 /* Header Styles */
 header {
-    background-color: #EDDECB; /* Autumn Glow */
+    background-color: #e2e3ec; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 20px 0;
     position: sticky;
@@ -409,7 +409,7 @@ nav ul li a:hover {
 }
 
 .brand-card {
-    background-color: #DFBEAB; /* Pumpkin Cream */
+    background-color: #bca192; /* Pumpkin Cream */
     border-radius: 10px;
     padding: 30px 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
